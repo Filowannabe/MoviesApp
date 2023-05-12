@@ -1,14 +1,17 @@
-
 <h1>Cartelera</h1>
 
 <div class="row" *ngIf="movies.length > 0">
     <div class="col">
-        
+
         <app-slide-show [movies]="moviesSlideShow"></app-slide-show>
 
     </div>
 </div>
-
-<h1 class="mt-5">Estrenos</h1>
+<div class="group">
+    <h1 class="">Estrenos</h1>
+    <div>
+        <button type="button" class="btn btn-outline-info mb-4" (click)="aleatoridad()">Aleatoriedad</button>
+    </div>
+</div>
 
 <app-peliculas-poster-grid *ngIf="movies.length > 0" [movies]="movies"></app-peliculas-poster-grid>

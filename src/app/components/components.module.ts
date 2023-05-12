@@ -9,6 +9,7 @@ import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-
 import { PipesModule } from '../pipes/pipes.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CastSlideShowComponent } from './cast-slide-show/cast-slide-show.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -17,7 +18,8 @@ import { CastSlideShowComponent } from './cast-slide-show/cast-slide-show.compon
     NavbarComponent,
     SlideShowComponent,
     PeliculasPosterGridComponent,
-    CastSlideShowComponent
+    CastSlideShowComponent,
+    FooterComponent
   ],
   exports: [
     NavbarComponent,

@@ -2,56 +2,58 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Movie } from 'src/app/interfaces/peliculas.interface';
 import { PeliculasService } from 'src/app/services/peliculas.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  
-  movies:Movie[] = [];
-  moviesSlideShow:Movie[] = [];
-  @HostListener('window:scroll',['$event'])
-  onScroll(){
-    //console.log('hola')
 
-    const pos = (document.documentElement.scrollTop || document.body.scrollTop)*1300;
+  movies: Movie[] = [];
+  moviesSlideShow: Movie[] = [];
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+
+    const pos = (document.documentElement.scrollTop || document.body.scrollTop) * 1300;
     const max = (document.documentElement.scrollHeight || document.body.scrollHeight);
-    
+
     if (pos > max) {
-      if (this.peliculasSvc.cargando) {return;}
-      this.peliculasSvc.getPeliculas().subscribe(movies=>{
+      if (this.peliculasSvc.cargando) { return; }
+      this.peliculasSvc.getPeliculas().subscribe(movies => {
 
         this.movies.push(...movies);
 
 
       })
     }
-    
-    //console.log({pos, max})
-
   }
 
-  constructor(private peliculasSvc:PeliculasService){
-
-
-
-
+  constructor(private peliculasSvc: PeliculasService) {
   }
 
-
-  ngOnInit(): void {
-    
-    this.peliculasSvc.getPeliculas().subscribe(movies=>{
-        
+  peliculas() {
+    this.peliculasSvc.getPeliculas().subscribe(movies => {  
       this.movies = movies;
       this.moviesSlideShow = movies;
     })
+
   }
 
-  ngOnDestroy(){
+  ngOnInit(): void {
+    this.peliculas();
+  }
+
+  ngOnDestroy() {
     this.peliculasSvc.resetPeliculaPage();
   }
 
+
+  aleatoridad() {
+   let p = [this.peliculasSvc.getPeliculas().subscribe(movies => {
+        this.movies = movies;
+      this.moviesSlideShow = movies;
+    })];
+    const r = Math.floor(Math.random() * (p.length - 1));
+    return this.moviesSlideShow[r];
+  }
 }
