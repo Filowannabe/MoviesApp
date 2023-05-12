@@ -25,7 +25,7 @@ export class PeliculasService {
   }
 
   getPeliculas():Observable<Movie[]>{
- console.log('cargando');
+//  console.log('cargando');
  if (this.cargando) {
   return of([]);
  }
