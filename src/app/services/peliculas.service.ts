@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MovieDetails } from '../interfaces/pelicula.interface';
 import { Movie, PeliculasResponse } from '../interfaces/peliculas.interface';
 import { Cast, Credits } from '../interfaces/credits.interface';
+import { WatchProviders } from '../interfaces/provider.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +55,7 @@ buscarPeliculas(texto:string):Observable<Movie[]>{
   )
 
 
-}  
+}
 
 getPeliculaDetalle(id:string){
 
@@ -77,6 +78,12 @@ getCast(id:string):Observable<Cast[]>{
     catchError(err => of([]))
   );
 
+}
+
+getwatchProviders(id:string){
+    return this.http.get<WatchProviders>(`${this.baseURL}/movie/${id}/watch/providers`,{
+      params:this.params
+    })
 }
 
 
