@@ -6,7 +6,8 @@ import { NgbRatingConfig}  from '@ng-bootstrap/ng-bootstrap';
 import {Location} from '@angular/common'
 import { Cast} from 'src/app/interfaces/credits.interface';
 import { combineLatest } from 'rxjs';
-import { WatchProviders } from '../../interfaces/provider.interface';
+import { WatchProviders , Buy} from '../../interfaces/provider.interface';
+
 
 @Component({
   selector: 'app-pelicula',
@@ -18,6 +19,7 @@ export class PeliculaComponent implements OnInit {
   pelicula?:MovieDetails;
   providers?:WatchProviders;
   cast:Cast[]=[];
+  flatrates?:Buy[]
 
   constructor(config: NgbRatingConfig, private activatedRoute: ActivatedRoute, private peliculasSvc:PeliculasService, private location:Location, private router: Router) {
      // customize default values of ratings used by this component tree
@@ -44,8 +46,12 @@ export class PeliculaComponent implements OnInit {
 
 
     this.peliculasSvc.getwatchProviders(id).subscribe(providers=>{
-      console.log(providers.results.AU.flatrate);
-      console.log(providers.results.AU.flatrate?.[0].provider_name);
+      console.log(providers.results);
+      if(providers && providers.results && providers.results.CO && providers.results.CO.flatrate && providers.results.CO.link){
+        const { flatrate,link } = providers.results.CO
+        console.log(providers.results.CO);
+        this.flatrates = flatrate
+      }
     })
 
   /*   this.peliculasSvc.getPeliculaDetalle(id).subscribe(movie=>{
@@ -53,7 +59,7 @@ export class PeliculaComponent implements OnInit {
       if (!movie) {
       this.router.navigateByUrl('/');
         return;
-      }
+
       this.pelicula=movie;
     });
 

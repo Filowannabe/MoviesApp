@@ -6,21 +6,11 @@ export interface WatchProviders {
 }
 
 export interface Results {
-  AU: Au;
-  BR: Au;
-  CA: Au;
-  GB: Au;
-  IE: Au;
-  IN: Au;
-  MX: Au;
-  NZ: Au;
-  US: Au;
+  CO: Au;
 }
 
 export interface Au {
   link:      string;
-  rent:      Buy[];
-  buy:       Buy[];
   flatrate?: Buy[];
 }
 
@@ -29,4 +19,5 @@ export interface Buy {
   provider_id:      number;
   provider_name:    string;
   display_priority: number;
+  link: string
 }
