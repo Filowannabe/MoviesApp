@@ -1,24 +1,17 @@
 <div class="row animate__animated animate__fadeIn" *ngIf="pelicula">
   <div class="col-md-6">
-    <img
-      class="img-thumbnail"
-      [src]="pelicula.poster_path | poster"
-      [alt]="pelicula.title"
-    />
+    <img class="img-thumbnail" [src]="pelicula.poster_path | poster" [alt]="pelicula.title" />
   </div>
   <div class="col-md-6 mt-2">
     <h3>{{ pelicula.title }}</h3>
 
     <div class="row">
 
-        <div class="col-10 text-white">
-          Votes average: {{ pelicula.vote_average | number: "1.1-2" }}
-          <ngb-rating
-            style="color: yellow"
-            [rate]="pelicula.vote_average"
-          ></ngb-rating>
+      <div class="col-10 text-white">
+        Votes average: {{ pelicula.vote_average | number: "1.1-2" }}
+        <ngb-rating style="color: yellow" [rate]="pelicula.vote_average"></ngb-rating>
 
-        </div>
+      </div>
 
     </div>
 
@@ -33,17 +26,16 @@
 
 
     <div class="row mt-3">
-      <h3>Plataformas:</h3>
+
       <div class="col text-white text-justify-content">
-        <div *ngFor="let flatrate of flatrates" >
-          <article class="streamingParent">
-            <div >
-              <span style="color: crimson;" class="material-symbols-outlined">
-                movie
-                </span>
+        <div *ngFor="let flatrate of flatrates">
+          <article class="streamingParent" style="align-items: center;">
+            <div>
+              <!--   -->
+              <img width="40" height="40" [src]=" flatrate.logo_path | poster" />
             </div>
-            <div style="margin-left: 5px;">
-                     {{ flatrate.provider_name }}
+            <div style="margin-left: 10px;">
+              {{ flatrate.provider_name }}
             </div>
 
           </article>
