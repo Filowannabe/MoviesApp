@@ -1,4 +1,4 @@
-<h1>Cartelera</h1>
+<h1 style="font-weight: bold;">Cartelera</h1>
 
 <div class="row" *ngIf="movies.length > 0">
     <div class="col">
@@ -7,11 +7,15 @@
 
     </div>
 </div>
-<div class="group">
-    <h1 class="">Estrenos</h1>
+<div style="display: flex; width:100%; justify-content: space-between; align-items: center;" class="group">
+
+    <h1 style="font-weight: bold;" class="">Estrenos</h1>
     <div>
-        <button type="button" class="btn btn-outline-info mb-4" (click)="aleatoridad()">Aleatoriedad</button>
+        <button (click)="aleatoridad()"
+            style=" margin-top: 20px; margin-bottom: 30px; font-weight: bold; background-color: blueviolet; border: none; padding: 25px 50px;"
+            class="btn btn-success">Aleatorio</button>
     </div>
+
 </div>
 
 <app-peliculas-poster-grid *ngIf="movies.length > 0" [movies]="movies"></app-peliculas-poster-grid>
