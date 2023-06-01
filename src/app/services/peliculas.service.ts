@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { MovieDetails } from '../interfaces/pelicula.interface';
-import { Movie, PeliculasResponse } from '../interfaces/peliculas.interface';
 import { Cast, Credits } from '../interfaces/credits.interface';
+import { Actor, MovieDetails } from '../interfaces/pelicula.interface';
+import { Movie, PeliculasResponse } from '../interfaces/peliculas.interface';
 import { WatchProviders } from '../interfaces/provider.interface';
 
 @Injectable({
@@ -79,7 +79,17 @@ getCast(id:string):Observable<Cast[]>{
   );
 
 }
+getActor(id:string){
 
+  return this.http.get<Actor>(`${this.baseURL}/person/${id}`,{
+    params:this.params
+  }).pipe(
+
+    catchError(err => of(null))
+
+  )
+
+}
 getwatchProviders(id:string){
     return this.http.get<WatchProviders>(`${this.baseURL}/movie/${id}/watch/providers`,{
       params:this.params

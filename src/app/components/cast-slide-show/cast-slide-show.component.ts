@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cast } from 'src/app/interfaces/credits.interface';
 import Swiper, { FreeMode } from 'swiper';
 
@@ -13,7 +14,7 @@ export class CastSlideShowComponent implements OnInit, AfterViewInit {
   
   actores:Cast[]= []
 
-  constructor() { 
+  constructor( private router: Router) { 
   
   }
   
@@ -35,6 +36,13 @@ export class CastSlideShowComponent implements OnInit, AfterViewInit {
     //console.log(this.cast)
   }
 
+  onActorClick(actor:any){
+
+
+    this.router.navigate(['/actor', actor.id])
+    
+
+  }
 
 
 }
