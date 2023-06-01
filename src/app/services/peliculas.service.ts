@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { MovieDetails,Actor } from '../interfaces/pelicula.interface';
-import { Movie, PeliculasResponse } from '../interfaces/peliculas.interface';
 import { Cast, Credits } from '../interfaces/credits.interface';
+import { Actor, MovieDetails } from '../interfaces/pelicula.interface';
+import { Movie, PeliculasResponse } from '../interfaces/peliculas.interface';
+import { WatchProviders } from '../interfaces/provider.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +55,7 @@ buscarPeliculas(texto:string):Observable<Movie[]>{
   )
 
 
-}  
+}
 
 getPeliculaDetalle(id:string){
 
@@ -89,6 +90,12 @@ getActor(id:string){
   )
 
 }
+getwatchProviders(id:string){
+    return this.http.get<WatchProviders>(`${this.baseURL}/movie/${id}/watch/providers`,{
+      params:this.params
+    })
+}
+
 
 
 resetPeliculaPage(){
