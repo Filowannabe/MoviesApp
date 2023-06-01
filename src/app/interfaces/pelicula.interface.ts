@@ -27,6 +27,13 @@ export interface MovieDetails {
     vote_average:          number;
     vote_count:            number;
 }
+export interface Actor {
+    adult : boolean;
+    name : string;
+    profile_path :string;
+    popularity :number;
+    biography :string;
+}
 
 export interface BelongsToCollection {
     id:            number;

@@ -2,8 +2,11 @@
     <div class="swiper-wrapper">
 
         <div *ngFor="let actor of cast" class="swiper-slide text-white text-center">
-            <img [src]="actor.profile_path | poster" [alt]="actor.name" class="img-thumbnail"/>
+         
+                <img [src]="actor.profile_path | poster" [alt]="actor.name" class="img-thumbnail" (click)="onActorClick(actor)"/>
             {{actor.name}}
+             
+            
         </div>
 
     </div>

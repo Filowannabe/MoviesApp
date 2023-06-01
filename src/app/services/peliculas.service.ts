@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { MovieDetails } from '../interfaces/pelicula.interface';
+import { MovieDetails,Actor } from '../interfaces/pelicula.interface';
 import { Movie, PeliculasResponse } from '../interfaces/peliculas.interface';
 import { Cast, Credits } from '../interfaces/credits.interface';
 
@@ -78,7 +78,17 @@ getCast(id:string):Observable<Cast[]>{
   );
 
 }
+getActor(id:string){
 
+  return this.http.get<Actor>(`${this.baseURL}/person/${id}`,{
+    params:this.params
+  }).pipe(
+
+    catchError(err => of(null))
+
+  )
+
+}
 
 
 resetPeliculaPage(){

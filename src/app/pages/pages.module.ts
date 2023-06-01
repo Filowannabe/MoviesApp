@@ -6,6 +6,7 @@ import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { BuscarComponent } from './buscar/buscar.component'
+import { ActorComponent } from './actor/actor.component'
 import { PipesModule } from '../pipes/pipes.module';
 
 
@@ -14,7 +15,8 @@ import { PipesModule } from '../pipes/pipes.module';
   declarations: [
     HomeComponent,
     PeliculaComponent,
-    BuscarComponent
+    BuscarComponent,
+    ActorComponent
   ],
   imports: [
     CommonModule,
